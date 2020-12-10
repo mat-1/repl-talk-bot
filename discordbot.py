@@ -1,8 +1,7 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 import repltalk
 import discord
 import asyncio
-import json
 import os
 
 token = os.getenv('token')
@@ -54,8 +53,7 @@ async def send_new_posts(channel, after):
 
 	for post in new_posts:
 		discord_embed = embed_from_post(post)
-		print(json.dumps(discord_embed.to_dict()))
-		# await channel.send(embed=discord_embed)
+		await channel.send(embed=discord_embed)
 
 	return returning_timestamp
 
