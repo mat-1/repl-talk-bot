@@ -18,7 +18,6 @@ def filter_posts_after(posts, after=None):
 async def get_new_posts(after=None):
 	posts = await repltalk_client.boards.all.get_posts(sort='new')
 
-	
 	posts = filter_posts_after(posts, after)
 
 	return posts
