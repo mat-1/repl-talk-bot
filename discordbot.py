@@ -11,8 +11,12 @@ repltalk_client = repltalk.Client()
 
 repl_talk_channel_id = 483420106785947650
 
+def datetime_to_seconds(dt):
+	epoch = datetime.utcfromtimestamp(0)
+	return (dt - epoch).total_seconds()
+
 def filter_posts_after(posts, after=None):
-	return filter(lambda post: post.timestamp > after, posts)
+	return filter(lambda post: datetime_to_seconds(post.timestamp) > datetime_to_seconds(after), posts)
 
 async def get_new_posts(after=None):
 	posts = await repltalk_client.boards.all.get_posts(sort='new')
