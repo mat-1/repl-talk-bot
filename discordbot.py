@@ -16,7 +16,7 @@ def datetime_to_seconds(dt):
 	return (dt - epoch).total_seconds()
 
 def filter_posts_after(posts, after=None):
-	return filter(lambda post: datetime_to_seconds(post.timestamp) > datetime_to_seconds(after), posts)
+	return list(filter(lambda post: datetime_to_seconds(post.timestamp) > datetime_to_seconds(after), posts))
 
 async def get_new_posts(after=None):
 	posts = await repltalk_client.boards.all.get_posts(sort='new')
@@ -54,7 +54,7 @@ def embed_from_post(post):
 async def send_new_posts(channel, after):
 	returning_timestamp = datetime.utcnow()
 	new_posts = await get_new_posts(after)
-
+	print(new_posts)
 	for post in new_posts:
 		discord_embed = embed_from_post(post)
 		await channel.send(embed=discord_embed)
