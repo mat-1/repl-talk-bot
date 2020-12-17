@@ -33,13 +33,13 @@ def embed_from_post(post):
 	embed_url = post.url
 	embed_timestamp = post.timestamp
 	
-	if board_name == "Ask":
+	if board_name == 'Ask':
 		embed_color = discord.Color.blue()
-	elif board_name == "Share":
+	elif board_name == 'Share':
 		embed_color = discord.Color.dark_teal()
-	elif board_name == "Tutorials":
+	elif board_name == 'Tutorials':
 		embed_color = discord.Color.green()
-	elif board_name == "Announcements":
+	elif board_name == 'Announcements':
 		embed_color = discord.Color.dark_blue()	
 	else:
 		embed_color = discord.Embed.Empty
