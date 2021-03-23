@@ -54,7 +54,7 @@ def embed_from_post(post):
 	)
 	embed.set_author(
 		name=post.author.name,
-		url=post.url,
+		url=post.author.url,
 		icon_url=post.author.avatar
 	)
 	embed.set_footer(text=board_name)
